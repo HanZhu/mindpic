@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid.js Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+    <h1>Mermaid.js Test</h1>
+    
+    <div class="mermaid">
+        graph TD
+            A[Start] --> B{Is it raining?}
+            B -->|Yes| C[Take an umbrella]
+            B -->|No| D[Enjoy the weather]
+            C --> E[End]
+            D --> E
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Initialize Mermaid
+                mermaid.initialize({ startOnLoad: false });
+
+                // Render the diagram
+                await mermaid.run();
+                console.log('Mermaid diagram rendered successfully');
+            } catch (error) {
+                console.error('Error rendering Mermaid diagram:', error);
+            }
+        });
+    </script>
+</body>
+</html>
