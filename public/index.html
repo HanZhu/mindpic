@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text-to-Diagram Web App</title>
+    <title>Mind Pic 🎨</title>
     <link rel="stylesheet" href="/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Nunito', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f4f4f4;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
         }
         .container {
             max-width: 800px;
@@ -19,65 +23,105 @@
             padding: 20px;
         }
         h1 {
-            color: #2c3e50;
+            color: #ff6b6b;
             text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
         }
         #input-section {
             margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         #text-input {
             width: 100%;
             height: 150px;
             padding: 10px;
-            border: 2px solid #ddd;
+            border: 2px solid #4ecdc4;
             border-radius: 5px;
             font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        #text-input:focus {
+            border-color: #45b7a7;
+            outline: none;
         }
         button {
-            background-color: #3498db;
+            background-color: #4ecdc4;
             color: white;
             border: none;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.1s;
+            display: block;
+            margin: 20px auto 0;
         }
         button:hover {
-            background-color: #2980b9;
+            background-color: #45b7a7;
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
         }
         #diagram-container {
             width: 100%;
             min-height: 400px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            border: 2px solid #4ecdc4;
+            border-radius: 10px;
             margin-top: 20px;
             background-color: white;
+            overflow: hidden;
         }
         .mermaid {
             font-family: 'Comic Sans MS', cursive, sans-serif;
         }
         #loading {
             text-align: center;
-            font-size: 18px;
+            font-size: 24px;
             margin-top: 20px;
+            color: #ff6b6b;
+        }
+        .emoji-float {
+            position: fixed;
+            font-size: 2em;
+            animation: float 6s infinite;
+            opacity: 0.7;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
         }
     </style>
 </head>
 <body>
+    <div class="emoji-float" style="top: 10%; left: 5%;">🎨</div>
+    <div class="emoji-float" style="top: 20%; right: 10%;">💡</div>
+    <div class="emoji-float" style="bottom: 15%; left: 10%;">🚀</div>
+    <div class="emoji-float" style="bottom: 25%; right: 5%;">✨</div>
+
     <div class="container">
         <header>
-            <h1>Text-to-Diagram Web App</h1>
+            <h1>Mind Pic 🧠🖼️</h1>
         </header>
         
         <main>
             <section id="input-section">
-                <textarea id="text-input" placeholder="Enter your text here..."></textarea>
-                <button id="submit-btn">Generate Diagram</button>
+                <textarea id="text-input" placeholder="✍️ Describe your thoughts here..."></textarea>
+                <button id="submit-btn">🎭 Generate Mind Pic</button>
             </section>
             
             <section id="output-section">
-                <div id="loading" style="display: none;">Processing...</div>
+                <div id="loading" style="display: none;">🤔 Processing your thoughts...</div>
                 <div id="diagram-container"></div>
             </section>
         </main>
