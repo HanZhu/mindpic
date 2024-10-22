@@ -17,8 +17,14 @@ jobs:
       with:
         node-version: '14'
     - run: npm ci
-    - name: Check server
-      run: node -e "console.log('Server check passed')"
+    - name: Check if server.js exists
+      run: |
+        if [ -f "server.js" ]; then
+          echo "server.js exists"
+        else
+          echo "server.js does not exist"
+          exit 1
+        fi
 
   deploy:
     needs: build
