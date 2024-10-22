@@ -8,6 +8,11 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 
+if (!process.env.OPENAI_API_KEY) {
+  console.error('OPENAI_API_KEY is not set. Please set this environment variable.');
+  process.exit(1);
+}
+
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 app.use(cors());
